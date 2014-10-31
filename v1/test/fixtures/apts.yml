@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  link: MyText
+  address: MyText
+  num_beds: 1.5
+  num_baths: 1.5
+  price: 1.5
+  description: MyText
+  status: MyString
+  opinions: MyString
+
+two:
+  link: MyText
+  address: MyText
+  num_beds: 1.5
+  num_baths: 1.5
+  price: 1.5
+  description: MyText
+  status: MyString
+  opinions: MyString
