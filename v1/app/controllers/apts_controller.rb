@@ -69,6 +69,7 @@ class AptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apt_params
-      params[:apt]
+      params.require(:apt).permit(:link, :address, :num_beds, :num_baths, :price, :description, :status, :opinions, :hunt_id)
+
     end
 end
