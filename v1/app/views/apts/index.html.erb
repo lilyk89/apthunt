@@ -1,0 +1,23 @@
+<h1>Listing apts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @apts.each do |apt| %>
+      <tr>
+        <td><%= link_to 'Show', apt %></td>
+        <td><%= link_to 'Edit', edit_apt_path(apt) %></td>
+        <td><%= link_to 'Destroy', apt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Apt', new_apt_path %>
