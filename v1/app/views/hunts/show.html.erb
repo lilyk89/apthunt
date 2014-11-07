@@ -1,4 +1,37 @@
 <p id="notice"><%= notice %></p>
 
+<div>Name: <%= @hunt.name %></div>
+<div>Description: <%= @hunt.description %></div>
+<div>Admin: <%= @hunt.admin%></div>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Apt.all.each do |apt| %>%>
+    <% if apt.hunt_id == @hunt.id %>
+      <tr>
+      	<td>Address: <%= apt.address %></td>
+      	<td><%= apt.link %></td>
+      	<td>Beds: <%= apt.num_beds %></td>
+      	<td>Baths: <%= apt.num_baths %></td>
+      	<td>Price: <%= apt.price %></td>
+      	<td>Status: <%= apt.status %></td>
+        <td><%= link_to 'Show', apt %></td>
+        <td><%= link_to 'Edit', edit_apt_path(apt) %></td>
+        <td><%= link_to 'Destroy', apt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Apt', new_apt_path %> |
+
+
 <%= link_to 'Edit', edit_hunt_path(@hunt) %> |
 <%= link_to 'Back', hunts_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105023827) do
+ActiveRecord::Schema.define(version: 20141107010550) do
 
   create_table "apts", force: true do |t|
     t.text     "link"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20141105023827) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "hunt_id"
+    t.integer  "contact_id"
   end
 
   create_table "contacts", force: true do |t|
@@ -42,6 +43,11 @@ ActiveRecord::Schema.define(version: 20141105023827) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "hunts_users", force: true do |t|
+    t.integer "hunt_id"
+    t.integer "user_id"
   end
 
   create_table "users", force: true do |t|

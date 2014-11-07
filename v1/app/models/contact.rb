@@ -1,3 +1,3 @@
 class Contact < ActiveRecord::Base
-	has_and_belongs_to_many :apts
+	belongs_to :apts
 end
