@@ -24,7 +24,7 @@ class HuntsController < ApplicationController
   # POST /hunts
   # POST /hunts.json
   def create
-    @hunt = Hunt.new(hunt_params)
+    @hunt = Hunt.new
 
     respond_to do |format|
       if @hunt.save
@@ -62,6 +62,7 @@ class HuntsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_hunt
       @hunt = Hunt.find(params[:id])
@@ -69,6 +70,11 @@ class HuntsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hunt_params
-      params.require(:hunt).permit(:name, :admin, :description)
+      params.require(:hunt).permit(
+        :name,
+        :admin,
+        :description,
+        :apts_attributes
+        )
     end
 end

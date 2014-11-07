@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :apts, :hunts, :contacts
+  resources :contacts
+  resources :hunts do 
+    resources :apts
+  end
 
-
-root 'apts#index'
+root 'hunts#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
