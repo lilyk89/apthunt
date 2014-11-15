@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @apt.link %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @apt.address %>
+</p>
+
+<p>
+  <strong>Num beds:</strong>
+  <%= @apt.num_beds %>
+</p>
+
+<p>
+  <strong>Num baths:</strong>
+  <%= @apt.num_baths %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @apt.price %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @apt.description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @apt.status %>
+</p>
+
+<p>
+  <strong>Opinions:</strong>
+  <%= @apt.opinions %>
+</p>
+
+<p>
+  <strong>Hunt:</strong>
+  <%= @apt.hunt_id %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @apt.contact %>
+</p>
+
+<%= link_to 'Edit', edit_apt_path(@apt) %> |
+<%= link_to 'Back', apts_path %>
