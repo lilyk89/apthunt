@@ -41,14 +41,11 @@
 </p>
 
 <p>
-  <strong>Hunt:</strong>
-  <%= @apt.hunt_id %>
-</p>
-
-<p>
   <strong>Contact:</strong>
   <%= @apt.contact %>
 </p>
 
-<%= link_to 'Edit', edit_apt_path(@apt) %> |
-<%= link_to 'Back', apts_path %>
+<%= link_to 'Edit', edit_hunt_apt_path(@hunt, @apt) %> |
+<%= link_to 'Back', hunt_path(@hunt) %> |
+<%= link_to 'Delete', hunt_apt_path(@hunt, @apt), :method => :delete, data: {confirm: 'Are you sure?' } %>
+

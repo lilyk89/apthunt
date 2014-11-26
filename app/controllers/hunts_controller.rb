@@ -1,4 +1,5 @@
 class HuntsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_hunt, only: [:show, :edit, :update, :destroy]
 
   # GET /hunts
@@ -25,6 +26,8 @@ class HuntsController < ApplicationController
   # POST /hunts.json
   def create
     @hunt = Hunt.new(hunt_params)
+    @hunt.admin = @user.email
+    @hunt.users << @user
 
     respond_to do |format|
       if @hunt.save
@@ -69,6 +72,6 @@ class HuntsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hunt_params
-      params.require(:hunt).permit(:name, :admin, :description)
+      params.require(:hunt).permit(:name, :admin, :description) if params[:hunt]
     end
 end

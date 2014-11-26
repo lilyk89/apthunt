@@ -1,4 +1,4 @@
-<%= form_for(@apt) do |f| %>
+<%= form_for([@hunt, @apt]) do |f| %>
   <% if @apt.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@apt.errors.count, "error") %> prohibited this apt from being saved:</h2>
@@ -42,10 +42,6 @@
   <div class="field">
     <%= f.label :opinions %><br>
     <%= f.text_area :opinions %>
-  </div>
-  <div class="field">
-    <%= f.label :hunt_id %><br>
-    <%= f.number_field :hunt_id %>
   </div>
   <div class="field">
     <%= f.label :contact %><br>

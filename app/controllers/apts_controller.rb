@@ -1,4 +1,6 @@
 class AptsController < ApplicationController
+  before_filter :load_hunt
+  before_filter :authenticate_user!
   before_action :set_apt, only: [:show, :edit, :update, :destroy]
 
   # GET /apts
@@ -25,10 +27,11 @@ class AptsController < ApplicationController
   # POST /apts.json
   def create
     @apt = Apt.new(apt_params)
+    @apt.hunt_id = @hunt.id
 
     respond_to do |format|
       if @apt.save
-        format.html { redirect_to @apt, notice: 'Apt was successfully created.' }
+        format.html { redirect_to [@hunt, @apt], notice: 'Apt was successfully created.' }
         format.json { render :show, status: :created, location: @apt }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class AptsController < ApplicationController
   def update
     respond_to do |format|
       if @apt.update(apt_params)
-        format.html { redirect_to @apt, notice: 'Apt was successfully updated.' }
+        format.html { redirect_to [@hunt, @apt], notice: 'Apt was successfully updated.' }
         format.json { render :show, status: :ok, location: @apt }
       else
         format.html { render :edit }
@@ -56,12 +59,17 @@ class AptsController < ApplicationController
   def destroy
     @apt.destroy
     respond_to do |format|
-      format.html { redirect_to apts_url, notice: 'Apt was successfully destroyed.' }
+      format.html { redirect_to hunt_apts_path(@hunt), notice: 'Apt was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+    
+    def load_hunt
+      @hunt = Hunt.find(params[:hunt_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_apt
       @apt = Apt.find(params[:id])
@@ -69,6 +77,6 @@ class AptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apt_params
-      params.require(:apt).permit(:link, :address, :num_beds, :num_baths, :price, :description, :status, :opinions, :hunt_id, :contact)
+      params.require(:apt).permit(:link, :address, :num_beds, :num_baths, :price, :description, :status, :opinions, :hunt_id, :contact) if params[:apt]
     end
 end
