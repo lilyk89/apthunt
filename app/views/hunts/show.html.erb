@@ -17,7 +17,7 @@
 
 <p>
   <strong>Users:</strong>
-  <% @hunt.users.each do %>
+  <% @hunt.users.each do |user| %>
   <%= user.email %>
   <%  end %>
 
