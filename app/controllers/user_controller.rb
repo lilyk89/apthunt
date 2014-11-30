@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-
+  before_action :authenticate_user!, only: [:update, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -62,7 +62,7 @@ class UserController < ApplicationController
     end
   end
 
-  private
+private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
@@ -73,6 +73,5 @@ class UserController < ApplicationController
       params.require(:user).permit(:email, :password)
     end
 end
-
 
 end

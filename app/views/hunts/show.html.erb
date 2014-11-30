@@ -15,6 +15,14 @@
   <%= @hunt.description %>
 </p>
 
+<p>
+  <strong>Users:</strong>
+  <% @hunt.users.each do %>
+  <%= user.email %>
+  <%  end %>
+
+</p>
+
 <table>
   <thead>
     <tr>

@@ -28,6 +28,7 @@ class AptsController < ApplicationController
   def create
     @apt = Apt.new(apt_params)
     @apt.hunt_id = @hunt.id
+#    @apt.contact = ["","",""]
 
     respond_to do |format|
       if @apt.save
@@ -64,8 +65,8 @@ class AptsController < ApplicationController
     end
   end
 
-  private
-    
+private
+
     def load_hunt
       @hunt = Hunt.find(params[:hunt_id])
     end

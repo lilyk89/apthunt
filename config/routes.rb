@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 end
 
 root 'hunts#index'
+get 'hunts/:id/add_user' => 'hunts#add_user'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

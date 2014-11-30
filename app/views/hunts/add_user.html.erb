@@ -1,0 +1,20 @@
+<h1> Add a User </h1>
+
+<% @hunt.users.each do |user| %>
+<%= user.email %>
+<% end %>
+
+<%= simple_form_for(@hunt) do |f| %>
+
+  <div class="field">
+    <%= f.label :hunt, "Add user" %><br>
+    <%= f.association :users, label_method: :email, value_method: :email, selected: @hunt.users %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @hunt %> |
+<%= link_to 'Back', hunts_path %>

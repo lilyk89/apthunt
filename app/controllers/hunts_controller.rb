@@ -1,6 +1,6 @@
 class HuntsController < ApplicationController
-  before_filter :authenticate_user!
-  before_action :set_hunt, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :show, :edit, :create, :update, :destroy]
+  before_action :set_hunt, only: [:show, :edit, :update, :destroy, :add_user]
 
   # GET /hunts
   # GET /hunts.json
@@ -22,12 +22,18 @@ class HuntsController < ApplicationController
   def edit
   end
 
+# Doesnt actually do anything right now... why?
+  def add_user
+  end
+
   # POST /hunts
   # POST /hunts.json
   def create
+    if user_signed_in?
     @hunt = Hunt.new(hunt_params)
-    @hunt.admin = @user.email
-    @hunt.users << @user
+    @hunt.users << @current_user
+  else puts "Log in first"
+  end
 
     respond_to do |format|
       if @hunt.save
@@ -64,14 +70,18 @@ class HuntsController < ApplicationController
     end
   end
 
-  private
+private
     # Use callbacks to share common setup or constraints between actions.
-    def set_hunt
-      @hunt = Hunt.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hunt_params
-      params.require(:hunt).permit(:name, :admin, :description) if params[:hunt]
+      params.require(:hunt).permit(:name, :admin, :description, :users,
+        apt_attributes: [:id, :_destroy],
+        user_attributes:[:id]) 
+      if params[:hunt]
     end
-end
+
+    def set_hunt
+      @hunt = Hunt.find(params[:id])
+    end
+  end
