@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<div>Link: <%= @apt.link %></div>
+<div>Address: <%= @apt.address %></div>
+<div># beds: <%= @apt.num_beds %></div>
+<div># baths: <%= @apt.num_baths %></div>
+<div>Price: <%= @apt.price %></div>
+<div>Description: <%= @apt.description %></div>
+<div>Status: <%= @apt.status %></div>
+<div>Opinions: <%= @apt.opinions %></div>
+
+
+<%= link_to 'Edit', edit_hunt_apt_path(@hunt, @apt) %> |
+<%= link_to 'Back', hunt_apt_path(@hunt, @apt) %> |
+<%= link_to 'Delete', hunt_apt_path(@hunt, @apt), :method => :delete, data: {confirm: 'Are you sure?' } %>
