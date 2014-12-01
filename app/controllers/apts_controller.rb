@@ -17,6 +17,7 @@ class AptsController < ApplicationController
   # GET /apts/new
   def new
     @apt = Apt.new
+    @apt.contact = {name:"", email:"", phone:""}
   end
 
   # GET /apts/1/edit
@@ -28,7 +29,7 @@ class AptsController < ApplicationController
   def create
     @apt = Apt.new(apt_params)
     @apt.hunt_id = @hunt.id
-#    @apt.contact = ["","",""]
+
 
     respond_to do |format|
       if @apt.save
@@ -78,6 +79,6 @@ private
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apt_params
-      params.require(:apt).permit(:link, :address, :num_beds, :num_baths, :price, :description, :status, :opinions, :hunt_id, :contact) if params[:apt]
+      params.require(:apt).permit(:link, :address, :num_beds, :num_baths, :price, :description, :status, :opinions, :hunt_id, :name, :email, :phone) if params[:apt]
     end
 end

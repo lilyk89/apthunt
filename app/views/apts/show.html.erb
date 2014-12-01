@@ -41,9 +41,21 @@
 </p>
 
 <p>
-  <strong>Contact:</strong>
-  <%= @apt.contact %>
+  <strong>Contact name:</strong>
+  <%= @apt.contact[:name] %>
 </p>
+
+<p>
+  <strong>Contact email:</strong>
+  <%= @apt.contact[:email] %>
+</p>
+
+<p>
+  <strong>Contact phone:</strong>
+  <%= @apt.contact[:phone] %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_hunt_apt_path(@hunt, @apt) %> |
 <%= link_to 'Back', hunt_path(@hunt) %> |
