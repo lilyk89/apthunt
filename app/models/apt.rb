@@ -29,6 +29,28 @@ class Apt < ActiveRecord::Base
 
 	belongs_to :hunt, inverse_of: :apts
 	serialize :contact
+  def name
+    self.contact[:name]
+  end
 
+  def name=(value)
+    self.contact[:name] = value
+  end
+
+  def email
+    self.contact[:email]
+  end
+
+  def email=(value)
+    self.contact[:email] = value
+  end
+
+  def phone
+    self.contact[:phone]
+  end
+
+  def phone=(value)
+    self.contact[:phone] = value
+  end
 
 end
