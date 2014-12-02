@@ -1,69 +1,32 @@
 class Apt < ActiveRecord::Base
 
-	# class Contact
-	# 	include ActiveModel::Conversion
-	# 	extend ActiveModel::Naming
-
-	# 	attr_accessor :name, :email, :phone
-
-	# 	def persisted?; true end
-
-	# 	def id; 1 end
-
-	# 	def self.load json
-	# 		obj = self.new
-	# 		unless json.nil?
-	# 			attrs = JSON.parse json
-	# 			obj.name = attrs['name']
-	# 			obj.email = attrs['email']
-	# 			obj.phone = attrs['phone']
-	# 		end
-	# 		obj
-	# 	end
-
-	# 	def self.dump obj
-	# 		obj.to_json if obj
-	# 	end
-
-	# end
-
 	belongs_to :hunt, inverse_of: :apts
 	serialize :contact
 
-	def contact_name
-		params[:contact_name] unless params.blank?
-  	end
+  def contact_name
+    self.contact[:contact_name]
+  end
 
-	def contact_email
-    	params[:contact_email] unless params.blank?
-  	end
+  def contact_name=(value)
+    self.contact[:contact_name] = value
+  end
 
-	def contact_phone
-    	params[:contact_phone] unless params.blank?
-  	end
+  def contact_email
+    self.contact[:contact_email]
+  end
 
-  # def name
-  #   self.contact[:name]
-  # end
+  def contact_email=(value)
+    self.contact[:contact_email] = value
+  end
 
-  # def name=(value)
-  #   self.contact[:name] = value
-  # end
+  def contact_phone
+    self.contact[:contact_phone]
+  end
 
-  # def email
-  #   self.contact[:email]
-  # end
-
-  # def email=(value)
-  #   self.contact[:email] = value
-  # end
-
-  # def phone
-  #   self.contact[:phone]
-  # end
-
-  # def phone=(value)
-  #   self.contact[:phone] = value
-  # end
+  def contact_phone=(value)
+    self.contact[:contact_phone] = value
+  end
 
 end
+
+# http://stackoverflow.com/questions/1002963/how-to-edit-a-rails-serialized-field-in-a-form

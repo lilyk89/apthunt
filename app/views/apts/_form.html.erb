@@ -43,14 +43,18 @@
     <%= f.label :opinions %><br>
     <%= f.text_area :opinions %>
   </div>
-  <% @apt.contact.each do |key, value| %>
-    <%= f.fields_for :contact, @apt.contact[key] do |contact_fields| %>
-      <div class="field">
-        <%= contact_fields.label key %> 
-        <%= contact_fields.text_area key, value: value %>
-      </div>
-    <% end %>
-  <% end %>
+  <div class="field">
+    <%= f.label :contact_name %><br>
+    <%= f.text_area :contact_name %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_email %><br>
+    <%= f.text_area :contact_email %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_phone %><br>
+    <%= f.text_area :contact_phone %>
+  </div>
     <div class="actions">
       <%= f.submit %>
     </div>

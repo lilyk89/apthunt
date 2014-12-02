@@ -45,9 +45,10 @@ class AptsController < ApplicationController
   # PATCH/PUT /apts/1
   # PATCH/PUT /apts/1.json
   def update
-       @apt.contact.each do |key, value|
-        @apt.contact[key] = value
-    end 
+    contact_name = params[:contact_name]
+    contact_email = params[:contact_email]
+    contact_phone = params[:contact_phone]
+
 
     respond_to do |format|
       if @apt.update(apt_params)
@@ -83,6 +84,6 @@ private
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apt_params
-      params.require(:apt).permit(:link, :address, :num_beds, :num_baths, :price, :description, :status, :opinions, :hunt_id, :contact) if params[:apt]
+      params.require(:apt).permit(:link, :address, :num_beds, :num_baths, :price, :description, :status, :opinions, :hunt_id, :contact, :contact_name, :contact_email, :contact_phone) if params[:apt]
     end
 end
