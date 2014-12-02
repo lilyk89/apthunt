@@ -45,6 +45,10 @@ class AptsController < ApplicationController
   # PATCH/PUT /apts/1
   # PATCH/PUT /apts/1.json
   def update
+       @apt.contact.each do |key, value|
+        @apt.contact[key] = value
+    end 
+
     respond_to do |format|
       if @apt.update(apt_params)
         format.html { redirect_to [@hunt, @apt], notice: 'Apt was successfully updated.' }
@@ -79,6 +83,6 @@ private
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apt_params
-      params.require(:apt).permit(:link, :address, :num_beds, :num_baths, :price, :description, :status, :opinions, :hunt_id, :name, :email, :phone) if params[:apt]
+      params.require(:apt).permit(:link, :address, :num_beds, :num_baths, :price, :description, :status, :opinions, :hunt_id, :contact) if params[:apt]
     end
 end
