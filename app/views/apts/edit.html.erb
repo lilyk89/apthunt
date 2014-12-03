@@ -4,3 +4,4 @@
 
 <%= link_to 'Show', hunt_apt_path(@hunt, @apt) %> |
 <%= link_to 'Back', hunt_apt_path(@hunt, @apt) %>
+<%= link_to 'Delete', hunt_apt_path(@hunt, @apt), :method => :delete, data: {confirm: 'Are you sure?' } %>

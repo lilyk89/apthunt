@@ -31,8 +31,8 @@
         <td><%= apt.hunt_id %></td>
         <td><%= apt.contact %></td>
         <td><%= link_to 'Show', hunt_apt_path(@hunt, apt) %></td>
-        <td><%= link_to 'Edit', edit_hunt_apt_path(apt) %></td>
-        <td><%= link_to 'Destroy', apt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_hunt_apt_path(@hunt, apt) %></td>
+        <td><%= link_to 'Destroy', hunt_apt_path(@hunt, apt), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
