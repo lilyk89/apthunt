@@ -38,7 +38,7 @@ class HuntsController < ApplicationController
       @hunt.users.push new_user
       respond_to do |format|
         if @hunt.save
-          format.html { redirect_to @hunt, notice: 'Hunt was successfully updated.' }
+          format.html { redirect_to @hunt, notice: 'User was successfully added to hunt.' }
           format.json { render :show, status: :ok, location: @hunt }
         else
           format.html { render :edit }
@@ -54,7 +54,7 @@ class HuntsController < ApplicationController
     @hunt.users.delete(user_to_remove)
     respond_to do |format|
       if @hunt.save
-        format.html { redirect_to @hunt, notice: 'Hunt was successfully updated.' }
+        format.html { redirect_to @hunt, notice: 'User was successfully removed from hunt.' }
         format.json { render :show, status: :ok, location: @hunt }
       else
         format.html { render :edit }

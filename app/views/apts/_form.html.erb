@@ -37,7 +37,7 @@
   </div>
   <div class="field">
     <%= f.label :status %><br>
-    <%= f.text_area :status %>
+<%= f.select :status, options_for_select(%w[Open Taken Vetoed Contacted Seen Applied]) %>
   </div>
   <div class="field">
     <%= f.label :opinions %><br>
@@ -55,9 +55,9 @@
     <%= f.label :contact_phone %><br>
     <%= f.text_area :contact_phone %>
   </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 
 <% end %>
 

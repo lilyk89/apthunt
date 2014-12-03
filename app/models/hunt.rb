@@ -6,5 +6,9 @@ accepts_nested_attributes_for :users,
 	:reject_if => :all_blank
 accepts_nested_attributes_for :apts,
 	:reject_if => :all_blank
+validates :name, presence: :true
+validates :description, presence: :true
+validates :admin, presence: :true
+# validates :users, uniqueness: {scope: :hunt_id}
 
 end
