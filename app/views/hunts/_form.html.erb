@@ -19,32 +19,16 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
-<!--   <div class="field">
+<div class="field">
     <%= f.label :admin %><br>
     <%= f.text_area :admin %>
-  </div> -->
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
 
-<p>Current users:
-
-<% @hunt.users.each do |user| %>
-  <%= form_tag("/remove_user", method: "put") do %>
-    <%= hidden_field_tag(:id, @hunt.id) %>
-    <%= user.email %>
-    <%= hidden_field_tag(:r, user.email) %>
-    <%= submit_tag("Remove") %>
-  <% end %>
-<% end %>
 </p>
 
-Add a user: 
-<%= form_tag("/add_user", method: "put") do %>
-  <%= hidden_field_tag(:id, @hunt.id) %>
-  <%= label_tag(:q, "Email address:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Add user") %>
-<% end %> 
+
 

@@ -17,7 +17,7 @@ class AptsController < ApplicationController
   # GET /apts/new
   def new
     @apt = Apt.new
-    @apt.contact = {name:"", email:"", phone:""}
+    @apt.contact = {name:" ", email:" ", phone:" "}
   end
 
   # GET /apts/1/edit
@@ -29,6 +29,11 @@ class AptsController < ApplicationController
   def create
     @apt = Apt.new(apt_params)
     @apt.hunt_id = @hunt.id
+    @apt.save
+    @apt.contact = {contact_name: params[:apt][:contact_name],
+                    contact_email: params[:apt][:contact_email],
+                    contact_phone: params[:apt][:contact_phone]
+                  }
 
 
     respond_to do |format|
@@ -45,9 +50,10 @@ class AptsController < ApplicationController
   # PATCH/PUT /apts/1
   # PATCH/PUT /apts/1.json
   def update
-    contact_name = params[:contact_name]
-    contact_email = params[:contact_email]
-    contact_phone = params[:contact_phone]
+    @apt.contact = {contact_name: params[:apt][:contact_name],
+                    contact_email: params[:apt][:contact_email],
+                    contact_phone: params[:apt][:contact_phone]
+                  }
 
 
     respond_to do |format|
@@ -84,6 +90,6 @@ private
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apt_params
-      params.require(:apt).permit(:link, :address, :num_beds, :num_baths, :price, :description, :status, :opinions, :hunt_id, :contact, :contact_name, :contact_email, :contact_phone) if params[:apt]
+      params.require(:apt).permit(:link, :address, :num_beds, :num_baths, :price, :description, :status, :opinions, :hunt_id, :contact) if params[:apt]
     end
 end

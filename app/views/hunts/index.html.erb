@@ -13,17 +13,19 @@
 
   <tbody>
     <% @hunts.each do |hunt| %>
-      <tr>
-        <td><%= hunt.name %></td>
-        <td><%= hunt.description %></td>
-        <td><%= hunt.admin %></td>
-        <% hunt.users.each do |user| %>
-        <td><%= user.email %></td>
-        <% end %>
-        <td><%= link_to 'Show', hunt %></td>
-        <td><%= link_to 'Edit', edit_hunt_path(hunt) %></td>
-        <td><%= link_to 'Destroy', hunt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if hunt.users.include? @current_user %>
+        <tr>
+          <td><%= hunt.name %></td>
+          <td><%= hunt.description %></td>
+          <td><%= hunt.admin %></td>
+          <% hunt.users.each do |user| %>
+            <td><%= user.email %></td>
+          <% end %>
+          <td><%= link_to 'Show', hunt %></td>
+          <td><%= link_to 'Edit', edit_hunt_path(hunt) %></td>
+          <td><%= link_to 'Destroy', hunt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

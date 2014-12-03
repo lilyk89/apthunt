@@ -7,26 +7,24 @@ class Apt < ActiveRecord::Base
     self.contact[:contact_name]
   end
 
-  def contact_name=(value)
-    self.contact[:contact_name] = value
-  end
+  # def contact_name=(value)
+  #   self.contact[:contact_name] = value
+  # end
 
   def contact_email
     self.contact[:contact_email]
   end
 
-  def contact_email=(value)
-    self.contact[:contact_email] = value
-  end
+  # def contact_email=(value)
+  #   self.contact[:contact_email] = value
+  # end
 
   def contact_phone
     self.contact[:contact_phone]
   end
 
-  def contact_phone=(value)
-    self.contact[:contact_phone] = value
-  end
+  # def contact_phone=(value)
+  #   self.contact[:contact_phone] = value
+  # end
 
 end
-
-# http://stackoverflow.com/questions/1002963/how-to-edit-a-rails-serialized-field-in-a-form

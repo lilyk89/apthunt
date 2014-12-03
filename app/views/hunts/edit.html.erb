@@ -2,5 +2,30 @@
 
 <%= render 'form' %>
 
+<p>Current users:
+
+<% if @hunt.admin == @current_user.email %>
+  <% @hunt.users.each do |user| %>
+    <%= form_tag("/remove_user", method: "put") do %>
+      <%= hidden_field_tag(:id, @hunt.id) %>
+      <%= user.email %>
+      <%= hidden_field_tag(:r, user.email) %>
+      <%= submit_tag("Remove") %>
+      <% end %>
+    <% end %>
+    Add a user: 
+    <%= form_tag("/add_user", method: "put") do %>
+      <%= hidden_field_tag(:id, @hunt.id) %>
+      <%= label_tag(:q, "Email address:") %>
+      <%= text_field_tag(:q) %>
+      <%= submit_tag("Add user") %>
+    <% end %>
+  <% else %>
+  <% @hunt.users.each do |user| %>
+    <%= user.email %>
+  <% end %>
+<% end %>
+
+
 <%= link_to 'Show', @hunt %> |
 <%= link_to 'Back', hunts_path %>

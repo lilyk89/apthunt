@@ -5,7 +5,9 @@ class HuntsController < ApplicationController
   # GET /hunts
   # GET /hunts.json
   def index
-    @hunts = Hunt.all
+    if user_signed_in?
+      @hunts = Hunt.all
+    end
   end
 
   # GET /hunts/1
@@ -20,12 +22,19 @@ class HuntsController < ApplicationController
 
   # GET /hunts/1/edit
   def edit
+    if user_signed_in?
+    end
   end
 
 # PATCH/PUT /hunts/1/add_user
   def add_user
     new_user = User.where email: params[:q]
     if @hunt.users.include? new_user
+      respond_to do |format|
+        format.html { render :edit }
+        format.json { render json: @hunt.errors, status: :unprocessable_entity }
+      end
+    else
       @hunt.users.push new_user
       respond_to do |format|
         if @hunt.save
@@ -35,11 +44,6 @@ class HuntsController < ApplicationController
           format.html { render :edit }
           format.json { render json: @hunt.errors, status: :unprocessable_entity }
         end
-      end
-    else
-      respond_to do |format|
-        format.html { render :edit }
-        format.json { render json: @hunt.errors, status: :unprocessable_entity }
       end
     end
   end

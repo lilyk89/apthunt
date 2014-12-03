@@ -26,19 +26,25 @@
 <table>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Address</th>
+      <th>Link</th>
+      <th>Beds</th>
+      <th>Baths</th>
+      <th>Price</th>
+      <th>Status</th>
+      <th colspan="6"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @hunt.apts.each do |apt| %>
       <tr>
-      	<td>Address: <%= apt.address %></td>
-      	<td>Link: <%= apt.link %></td>
-      	<td>Beds: <%= apt.num_beds %></td>
-      	<td>Baths: <%= apt.num_baths %></td>
-      	<td>Price: <%= apt.price %></td>
-      	<td>Status: <%= apt.status %></td>
+      	<td><%= apt.address %></td>
+      	<td><%= apt.link %></td>
+      	<td><%= apt.num_beds %></td>
+      	<td><%= apt.num_baths %></td>
+      	<td><%= apt.price %></td>
+      	<td><%= apt.status %></td>
         <td><%= link_to 'Show', hunt_apt_path(@hunt, apt) %></td>
         <td><%= link_to 'Edit', edit_hunt_apt_path(@hunt, apt) %></td>
         <td><%= link_to 'Destroy', hunt_apt_path(@hunt, apt), method: :delete, data: { confirm: 'Are you sure?' } %></td>
