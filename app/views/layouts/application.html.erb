@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>V2</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+<%- if user_signed_in? %>
+Hello, <%= current_user.email %>
+<%= link_to "Sign out", destroy_session_path(resource_name), :method => :delete %>
+<% else %>
+<%= link_to "Log in", new_user_session_path %> |
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <%= link_to "Sign up", new_user_registration_path %>
+<% end -%>
+<% end -%>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

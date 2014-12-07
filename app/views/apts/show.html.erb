@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @apt.link %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @apt.address %>
+</p>
+
+<p>
+  <strong>Num beds:</strong>
+  <%= @apt.num_beds %>
+</p>
+
+<p>
+  <strong>Num baths:</strong>
+  <%= @apt.num_baths %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @apt.price %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @apt.description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @apt.status %>
+</p>
+
+<p>
+  <strong>Opinions:</strong>
+  <%= @apt.opinions %>
+</p>
+
+<p>
+  <strong>Contact name:</strong>
+  <%= @apt.contact[:contact_name] %>
+</p>
+
+<p>
+  <strong>Contact email:</strong>
+  <%= @apt.contact[:contact_email] %>
+</p>
+
+<p>
+  <strong>Contact phone:</strong>
+  <%= @apt.contact[:contact_phone] %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_hunt_apt_path(@hunt, @apt) %> |
+<%= link_to 'Back', hunt_path(@hunt) %> |
+<%= link_to 'Delete', hunt_apt_path(@hunt, @apt), :method => :delete, data: {confirm: 'Are you sure?' } %>
+

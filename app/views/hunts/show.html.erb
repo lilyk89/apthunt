@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @hunt.name %>
+</p>
+
+<p>
+  <strong>Admin:</strong>
+  <%= @hunt.admin %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @hunt.description %>
+</p>
+
+<p>
+  <strong>Users:</strong>
+  <% @hunt.users.each do |user| %>
+  <%= user.email %>
+  <%  end %>
+
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>Link</th>
+      <th>Beds</th>
+      <th>Baths</th>
+      <th>Price</th>
+      <th>Status</th>
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hunt.apts.each do |apt| %>
+      <tr>
+      	<td><%= apt.address %></td>
+      	<td><%= apt.link %></td>
+      	<td><%= apt.num_beds %></td>
+      	<td><%= apt.num_baths %></td>
+      	<td><%= apt.price %></td>
+      	<td><%= apt.status %></td>
+        <td><%= link_to 'Show', hunt_apt_path(@hunt, apt) %></td>
+        <td><%= link_to 'Edit', edit_hunt_apt_path(@hunt, apt) %></td>
+        <td><%= link_to 'Destroy', hunt_apt_path(@hunt, apt), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    	</tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Apt', new_hunt_apt_path(@hunt) %> |
+
+<%= link_to 'Edit', edit_hunt_path(@hunt) %> |
+<%= link_to 'Back', hunts_path %>
