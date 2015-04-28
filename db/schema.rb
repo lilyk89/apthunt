@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141123140515) do
+ActiveRecord::Schema.define(version: 20141115101436) do
 
   create_table "apts", force: true do |t|
     t.text     "link"
@@ -34,11 +34,6 @@ ActiveRecord::Schema.define(version: 20141123140515) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "hunts_users", id: false, force: true do |t|
-    t.integer "hunt_id"
-    t.integer "user_id"
   end
 
   create_table "users", force: true do |t|
